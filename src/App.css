@@ -1,11 +1,6 @@
 body {
   background: rgb(2, 0, 36);
-  background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(9, 34, 121, 1) 0%,
-    rgba(0, 212, 255, 1) 100%
-  );
+
   font-family: Arial, Helvetica, sans-serif;
   color: white;
 }
@@ -20,11 +15,11 @@ h1 {
   display: flex;
   flex-direction: column;
 }
-.inputSenha {
-  display: flex;
+/* .inputSenha {
   width: 413px;
   margin: 0 auto;
-}
+  max-width: 413px;
+} */
 
 input {
   margin: 0 auto;
@@ -38,10 +33,7 @@ input {
   cursor: pointer;
 }
 input:hover {
-  border: 3px solid #0e3d88;
-}
-.senha {
-  margin-right: 10px;
+  border: 3px solid #00caf7;
 }
 
 button {
@@ -62,37 +54,22 @@ button:active {
 button:hover {
   font-size: 22px;
 }
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media (max-width: 742px) {
+  .container {
+    height: 90vh;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  h1 {
+    font-size: 22px;
   }
-  to {
-    transform: rotate(360deg);
+  input {
+    width: 300px;
+    height: 10px;
+  }
+
+  button {
+    width: 315px;
+
+    font-size: 12px;
   }
 }

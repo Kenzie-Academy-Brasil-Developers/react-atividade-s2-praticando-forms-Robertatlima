@@ -1,4 +1,3 @@
-import "./style.css";
 const CardUser = ({ card }) => {
   return (
     <div className="infoUser">

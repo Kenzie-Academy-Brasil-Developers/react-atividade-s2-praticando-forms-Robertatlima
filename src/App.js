@@ -14,13 +14,20 @@ function App() {
       .string()
       .required("Campo obrigatório")
       .matches("^[A-Za-zÀ-ü ]{0,18}$", "Nome deve ter no maximo 18 caracteres"),
-    email: yup.string().required("Campo obrigatório").email("email invalido"),
+    email: yup.string().required("Campo obrigatório").email("Email inválido"),
+    emailConfirmed: yup
+      .string()
+      .required("Email inválido")
+      .oneOf([yup.ref("email"), null], "Emails diferentes"),
     cellphone: yup.string().required("Campo obrigatório"),
     password: yup.string().required("Campo obrigatório"),
     // .matches(
     //   "^(?=.*[a-z])(?=.*[A-Z])(?=.*d)(?=.*[@$!%*?&])[A-Za-zd@$!%*?&]{8,}$",
     //   "essa senha não é segura")
-    passwordConfirmed: yup.string().required("Campo obrigatório"),
+    passwordConfirmed: yup
+      .string()
+      .required("Campo obrigatório")
+      .oneOf([yup.ref("password"), null], "senhas diferentes"),
     // .matches(
     //   "^(?=.*[a-z])(?=.*[A-Z])(?=.*d)(?=.*[@$!%*?&])[A-Za-zd@$!%*?&]{8,}$",
     //   "essa senha não é segura"
@@ -50,27 +57,32 @@ function App() {
         {errors.name?.message}
         <input placeholder="Endereço de email*" {...register("email")} />
         {errors.email && errors.email.message}
-        <input placeholder="Confirme seu email*" {...register("email")} />
-        {errors.email?.message}
+        <input
+          placeholder="Confirme seu email*"
+          {...register("emailConfirmed")}
+        />
+        {errors.emailConfirmed?.message}
         <input
           placeholder="Contato:(81)99999-9999*"
           {...register("cellphone")}
         />
         {errors.cellphone?.message}
-        <div className="inputSenha">
-          <input
-            className="senha"
-            placeholder="Senha*"
-            {...register("password")}
-          />
-          {errors.password?.message}
-          <input
-            id="input1"
-            placeholder="Confirme sua senha*"
-            {...register("passwordConfirmed")}
-          />
-          {errors.passwordConfirmed?.message}
-        </div>
+
+        <input
+          type="password"
+          className="senha"
+          placeholder="Senha*"
+          {...register("password")}
+        />
+        {errors.password?.message}
+        <input
+          type="password"
+          id="input1"
+          placeholder="Confirme sua senha*"
+          {...register("passwordConfirmed")}
+        />
+        {errors.passwordConfirmed?.message}
+
         <button>Enviar</button>
       </form>
       {card && <CardUser card={card} />}
